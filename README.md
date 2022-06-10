@@ -1,2 +1,3 @@
-# hangmang
-Hangmang Game
+# Hangmang Game 
+### Universitary project
+D
