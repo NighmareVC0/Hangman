@@ -171,7 +171,7 @@ int main()
                   gotoxy(54, 11);
                   do
                   {
-                     key = tolower(getch())
+                     key = tolower(getch());
                      if (key >= 'a' && key <= 'z' || key == ESC)
                      {
                         caracter = key;
