@@ -1,4 +1,4 @@
-# Hangmang Game 
+# Hangmang Game / Ahorcado
 ### Universitary project
 
 This is a Hangman game I made using C in VS Code.
