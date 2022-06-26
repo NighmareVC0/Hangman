@@ -21,7 +21,7 @@
 // Boolean
 #define TRUE 1
 #define FALSE 0
-// Caracter Inicial
+// Carácter Inicial
 #define INITIAL 32
 // Dibujo del Ahorcado
 #define BASE 193

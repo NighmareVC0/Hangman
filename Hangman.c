@@ -250,8 +250,8 @@ void getText(char word[])
 /*
 Module:     showWord
 Arguments:  char word[], string to be printed.
-            int xPos, x position to be printing.
-            int yPos, y position to be printing.
+            int xPos, horizontal plane's position to be printing.
+            int yPos, vertical plane's position to be printing.
 
 Objetive:   to print the string.
 Return:     None.
@@ -271,7 +271,7 @@ Module:     setTemp
 Arguments:  char temp[], it would be the string which contains '*'.
             char word[], the string that has the original word.
 
-Objetive:   to create la cadena temporal.
+Objetive:   to create the temporal string.
 Return:     None.
 */
 void setTemp(char temp[], char word[])
