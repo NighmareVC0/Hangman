@@ -8,7 +8,7 @@ It has a life system (depends on the word).
 
 ## Español
 
-Para jugar este juego deberas tener o poner, "conio. c" en tu carpeta de "include" (Por ejemplo): C:\MinGW\include)
+Para jugar este juego deberás tener o poner, "conio. c" en tu carpeta de "include" (Por ejemplo): C:\MinGW\include)
 
 El juego fue pensado para jugarse con dos jugadores, no puedes jugar solo.
 
