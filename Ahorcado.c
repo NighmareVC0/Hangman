@@ -1,9 +1,9 @@
-// Includes
+// Librerías
 #include <conio.c>
 #include <ctype.h>
 #include <math.h>
 #include <time.h>
-// Key Bindings
+// Mapeo de Teclas
 #define ESC 27
 #define BKSP 8
 #define ONE 49
@@ -12,29 +12,29 @@
 #define SPCE 32
 #define ASTRK 42
 #define END '\0'
-// Colors
+// Colores
 #define WINCOL GREEN
 #define LOSSCOL RED
-// Max size of
+// Tamaño máximo de
 #define MAX 35
 #define POINTS 6
 // Boolean
 #define TRUE 1
 #define FALSE 0
-// Initial character
+// Caracter Inicial
 #define INITIAL 32
-// Hangman draw
+// Dibujo del Ahorcado
 #define BASE 193
 #define HOR 196
 #define VER 179
 #define ESQIZQ 218
 #define ESQDER 191
-// int modules
+// Módulos int
 int score(char);
 int verifUsed(char[], char);
 int getChances(char[]);
 int quantVowels(char[]);
-// void modules
+// Módulos void
 void showDraw(int, int);
 void setTemp(char[], char[]);
 void getText(char[]);
@@ -56,13 +56,13 @@ int main()
       word[0] = END, temp[0] = END;
       _setcursortype(0);
       system("cls");
-      printf("Welcome to %cThe Hangman%c\n\nMenu:\n1. Play\n2. Exit\n", 34, 34);
+      printf("Bienvenido a %cEl Ahorcado%c\n\nMen%c:\n1. Jugar\n2. Salir\n", 34, 34, 163);
       chr = getche();
       if (chr == ONE)
       {
          system("cls");
          gotoxy(40, 13);
-         printf("Enter a Word: ");
+         printf("Ingrese una palabra: ");
          getText(word);
          setTemp(temp, word);
          chr = INITIAL;
@@ -113,7 +113,7 @@ int main()
             else
             {
                gotoxy(30, 12);
-               printf("This character is already used \"%c\".", chr);
+               printf("Ya se ha utilizado el caracter \"%c\".", chr);
             }
             if (!strcmp(word, temp))
             {
@@ -122,17 +122,17 @@ int main()
                puts(temp);
                gotoxy(30, 13);
                textcolor(GREEN);
-               printf("%cCongratulations, you won%c\n", 173, 33);
+               printf("%cFelicidades, has ganado%c\n", 173, 33);
                textcolor(WHITE);
                gotoxy(30, 14);
                system("pause");
                system("cls");
-               printf("%cCongratulations, you won%c\n", 173, 33);
-               printf("The word was: \"%s\"\n", word);
-               printf("With a total of:\n");
-               printf("Total points: %d\n", totalPoints);
-               printf("Left lives: %d\n", lives);
-               printf("Current row: %d\n", row);
+               printf("%cFelicidades, has ganado%c\n", 173, 33);
+               printf("La palabra era: \"%s\"\n", word);
+               printf("Con un total de:\n");
+               printf("Puntos totales: %d\n", totalPoints);
+               printf("Vidas restantes: %d\n", lives);
+               printf("Racha actual: %d\n", row);
                system("pause");
             }
             if (!repeated)
@@ -142,21 +142,21 @@ int main()
                gotoxy(30, 8);
                puts(temp);
                gotoxy(30, 1);
-               printf("Left lives: %d", lives);
+               printf("Vidas Restantes: %d", lives);
                gotoxy(1, 1);
-               printf("Time: ");
+               printf("Tiempo: ");
                gotoxy(1, 14);
-               printf("Current row: %d", row);
+               printf("Racha Actual: %d", row);
                gotoxy(30, 5);
-               printf("Used characters: %s", usadas);
+               printf("Caracteres usados: %s", usadas);
                gotoxy(1, 16);
-               printf("Points earned : %d", points);
+               printf("Puntos obtenidos: %d", points);
                gotoxy(1, 17);
-               printf("Row points    : %d", rowPoints);
+               printf("Puntos de racha : %d", rowPoints);
                gotoxy(1, 18);
-               printf("Total points  : %d", totalPoints);
+               printf("Puntos totales  : %d", totalPoints);
                gotoxy(30, 11);
-               printf("Enter a character: ");
+               printf("Introduzca un caracter: ");
                gotoxy(9, 1);
                showTime(time(NULL) - timer);
             }
@@ -164,24 +164,24 @@ int main()
             {
                gotoxy(30, 12);
                textcolor(RED);
-               printf("Bad luck, you lost.");
+               printf("Mala suerte, has perdido.");
                textcolor(WHITE);
                gotoxy(30, 13);
                system("pause");
                system("cls");
-               printf("Bad luck, you lost.\n");
-               printf("The word was: \"%s\"\n", word);
-               printf("With a total of:\n");
-               printf("Total points: %d\n", totalPoints);
+               printf("Mala suerte, has perdido.\n");
+               printf("La palabra era: \"%s\"\n", word);
+               printf("Con un total de:\n");
+               printf("Puntos totales: %d\n", totalPoints);
                system("pause");
             }
 
             if (lives && strcmp(word, temp))
             {
 
-               gotoxy(49, 11);
+               gotoxy(54, 11);
                putchar(chr);
-               gotoxy(49, 11);
+               gotoxy(54, 11);
                _setcursortype(1);
                do
                {
@@ -196,7 +196,7 @@ int main()
       else if (chr == TWO)
       {
          system("cls");
-         printf("%cThanks for playing%c\n", 173, 33);
+         printf("%cGracias por jugar%c\n", 173, 33);
          system("pause");
          return 0;
       }
@@ -240,7 +240,7 @@ void getText(char word[])
                temp[pos] = SPCE;
             pos++;
          }
-         showWord(temp, 53, 13);
+         showWord(temp, 61, 13);
       } while (chr != ENTER);
    } while (!isalpha(word[0]));
    word[pos] = END;
@@ -260,9 +260,9 @@ void showWord(char word[], int xPos, int yPos)
 {
    for (int pos = 0; word[pos]; pos++)
    {
-      gotoxy((xPos + (pos + 1)), yPos);
       if (word[pos])
          printf("%c", word[pos]);
+      gotoxy((xPos + (pos + 1)), yPos);
    }
    return;
 }
