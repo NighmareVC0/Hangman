@@ -253,7 +253,7 @@ Argumento:  char word[], cadena a imprimir.
             int xPos, posición en X a imprimir.
             int yPos, posición en Y a imprimir.
 
-Objetivo:   Crear la cadena temporal.
+Objetivo:   Imprimir una cadena.
 Retorno:    Ninguno.
 */
 void showWord(char word[], int xPos, int yPos)
@@ -358,8 +358,8 @@ int verifUsed(char cadena[], char chr)
 /*
 Función:    showTime
 Argumento:  int seg, Segundos a evaluar.
-Objetivo:   Obtener y mostrar el timer actual.
-Retorno:    (void)
+Objetivo:   Obtener y mostrar el tiempo actual.
+Retorno:    Ninguno.
 */
 void showTime(int seg)
 {
@@ -375,7 +375,7 @@ void showTime(int seg)
 /*
 Función:    score
 Argumento:  char chr. Carácter a evaluar.
-Objetivo:   Obtener los puntos del o caracteres acertados.
+Objetivo:   Obtener los puntos de caracter acertado.
 Retorno:    int Puntos obtenidos por el caracter.
 */
 int score(char chr)
@@ -404,7 +404,9 @@ int score(char chr)
 }
 /*
 Función:    showDraw
-Argumento:  (int) fallada, (int) totalLives
+Argumento:  int failed, cantidad de veces falladas.
+            int totalLives, cantidad de vidas disponibles.
+
 Objetivo:   Dibujar al muñeco en proporciones
 Retorno:    Ninguno.
 */

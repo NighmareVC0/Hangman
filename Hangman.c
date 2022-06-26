@@ -31,8 +31,8 @@
 #define ESQDER 191
 // int modules
 int score(char);
-int verifUsed(char[], char);
-int getChances(char[]);
+int checkUsed(char[], char);
+int getLives(char[]);
 int quantVowels(char[]);
 // void modules
 void showDraw(int, int);
@@ -67,14 +67,14 @@ int main()
          setTemp(temp, word);
          chr = INITIAL;
          timer = time(NULL);
-         lives = getChances(word);
+         lives = getLives(word);
          totalLives = lives;
          char usadas[MAX] = "";
 
          do
          {
             _setcursortype(0);
-            repeated = verifUsed(usadas, chr);
+            repeated = checkUsed(usadas, chr);
             if (!repeated)
             {
                correct = FALSE;
@@ -204,10 +204,10 @@ int main()
    } while (chr != ONE || chr != TWO);
 }
 /*
-Función:    getText
-Argumento:  char word[], Palabra a ingresar por el usuario.
-Objetivo:   Obtener la palabra con la que se va a jugar.
-Retorno:    Ninguno.
+Module:     getText
+Arguments:  char word[], word to be ingresen by the player.
+Objetive:   to get the original word to be used in the game.
+Return:     None.
 */
 void getText(char word[])
 {
@@ -248,13 +248,13 @@ void getText(char word[])
    return;
 }
 /*
-Función:    showWord
-Argumento:  char word[], cadena a imprimir.
-            int xPos, posición en X a imprimir.
-            int yPos, posición en Y a imprimir.
+Module:     showWord
+Arguments:  char word[], string to be printed.
+            int xPos, x position to be printing.
+            int yPos, y position to be printing.
 
-Objetivo:   Crear la cadena temporal.
-Retorno:    Ninguno.
+Objetive:   to print the string.
+Return:     None.
 */
 void showWord(char word[], int xPos, int yPos)
 {
@@ -267,12 +267,12 @@ void showWord(char word[], int xPos, int yPos)
    return;
 }
 /*
-Función:    setTemp
-Argumento:  char temp[], será la cadena que tendrá los '*' asteriscos.
-            char word[], es la cadena que contiene la palabra digitada por el usuario.
+Module:     setTemp
+Arguments:  char temp[], it would be the string which contains '*'.
+            char word[], the string that has the original word.
 
-Objetivo:   Crear la cadena temporal.
-Retorno:    Ninguno.
+Objetive:   to create la cadena temporal.
+Return:     None.
 */
 void setTemp(char temp[], char word[])
 {
@@ -288,12 +288,12 @@ void setTemp(char temp[], char word[])
    return;
 }
 /*
-Función:    getChances
-Argumento:  char word[], palabra a evaluar.
-Objetivo:   Obtener la cantidad de vidas que tendrá el jugador.
-Retorno:    int Cantidad de vidas.
+Module:     getLives
+Arguments:  char word[], string to be evaluated.
+Objetive:   to get the amount of lives the player will have.
+Return:     int quantity of lives.
 */
-int getChances(char word[])
+int getLives(char word[])
 {
    char used[MAX] = " ";
    setNonRep(word, used);
@@ -301,12 +301,12 @@ int getChances(char word[])
    return round(((strlen(used) - quantVow) * (60.0 / 100)) + (quantVow / 2));
 }
 /*
-Función:    setNonRep
-Argumento:  char word[], cadena a evaluar.
-            char used[], cadena a convertir en una cadena sin repetición.
+Module:     setNonRep
+Arguments:  char word[], string to be evaluated.
+            char used[], string to turn into a non repiten characters.
 
-Objetivo:   Crear una cadena sin repetición de caracteres.
-Retorno:    Ninguno.
+Objetive:   to create a string with no repetitions of characters.
+Return:     None.
 */
 void setNonRep(char word[], char used[])
 {
@@ -324,11 +324,11 @@ void setNonRep(char word[], char used[])
    return;
 }
 /*
-Función:    quantVowels
-Argumento:  char used[], cadena a evaluar.
+Module:     quantVowels
+Arguments:  char used[], string to be evaluated.
 
-Objetivo:   Contar las vocales de una cadena.
-Retorno:    Cantidad de vocales.
+Objetive:   to count the amount of vowels the string has.
+Return:     int quantity of vowels.
 */
 int quantVowels(char used[])
 {
@@ -341,14 +341,14 @@ int quantVowels(char used[])
    return total;
 }
 /*
-Función:    verifUsed
-Argumento:  char cadena[], Cadena a evaluar.
-            char chr,  caracter a evaluar.
+Module:     checkUsed
+Arguments:  char cadena[], string to be evaluated.
+            char chr, character to be evaluated.
 
-Objetivo:   Verificar si el chr ya se encuentra en la cadena.
-Retorno:    int true or false
+Objetive:   to check if the character 'chr' is already used.
+Return:     int true or false
 */
-int verifUsed(char cadena[], char chr)
+int checkUsed(char cadena[], char chr)
 {
    for (int pos = 0; cadena[pos]; pos++)
       if (chr == cadena[pos])
@@ -356,10 +356,10 @@ int verifUsed(char cadena[], char chr)
    return 0;
 }
 /*
-Función:    showTime
-Argumento:  int seg, Segundos a evaluar.
-Objetivo:   Obtener y mostrar el timer actual.
-Retorno:    (void)
+Module:     showTime
+Arguments:  int seg, seconds to be evaluated.
+Objetive:   to get and show the current time lapsed.
+Return:     None.
 */
 void showTime(int seg)
 {
@@ -373,10 +373,10 @@ void showTime(int seg)
    return;
 }
 /*
-Función:    score
-Argumento:  char chr. Carácter a evaluar.
-Objetivo:   Obtener los puntos del o caracteres acertados.
-Retorno:    int Puntos obtenidos por el caracter.
+Module:     score
+Arguments:  char chr, character to be evaluated.
+Objetive:   to get the amount of points earned by the correct character.
+Return:     int amount of point gotten.
 */
 int score(char chr)
 {
@@ -403,10 +403,11 @@ int score(char chr)
          return 40;
 }
 /*
-Función:    showDraw
-Argumento:  (int) fallada, (int) totalLives
-Objetivo:   Dibujar al muñeco en proporciones
-Retorno:    Ninguno.
+Module:     showDraw
+Arguments:  int failed, total of failures.
+            int totalLives, total amount of lives.
+Objetive:   to draw the hangman on proportions.
+Return:     None.
 */
 void showDraw(int failed, int totalLives)
 {
@@ -429,23 +430,23 @@ void showDraw(int failed, int totalLives)
    printf("%c", VER);
    gotoxy(4, 11);
    printf("%c%c%c%c%c%c%c%c%c%c%c", HOR, HOR, HOR, HOR, HOR, BASE, HOR, HOR, HOR, HOR, HOR);
-   // cabeza
+   // head
    gotoxy(15, 5);
    printf("%c", failed >= (0.14 * totalLives) ? 79 : 32);
-   // cuerpo
+   // body
    gotoxy(15, 6);
    printf("%c", failed >= (0.28 * totalLives) ? 179 : 32);
-   // brazos
+   // arms
    gotoxy(14, 5);
-   printf("%c", failed >= (0.42 * totalLives) ? 92 : 32); // izquierdo
+   printf("%c", failed >= (0.42 * totalLives) ? 92 : 32); // left one
    gotoxy(16, 5);
-   printf("%c", failed >= (0.56 * totalLives) ? 47 : 32); // derecho
-   // piernas
+   printf("%c", failed >= (0.56 * totalLives) ? 47 : 32); // right one
+   // legs
    gotoxy(14, 7);
-   printf("%c", failed >= (0.70 * totalLives) ? 47 : 32); // izquierdo
+   printf("%c", failed >= (0.70 * totalLives) ? 47 : 32); // left one
    gotoxy(16, 7);
-   printf("%c", failed >= (0.84 * totalLives) ? 92 : 32); // derecho
-   // ahorcado
+   printf("%c", failed >= (0.84 * totalLives) ? 92 : 32); // right one
+   // hang
    gotoxy(15, 5);
    if (failed == totalLives)
    {
